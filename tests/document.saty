@@ -1,0 +1,11 @@
+@require: mathml
+
+let open Mathml in
+
+document (|
+  title = {SATySFi-MathML},
+|) '<
+  +p {
+    Hello World!
+  }
+>
