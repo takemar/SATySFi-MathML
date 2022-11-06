@@ -1,11 +1,19 @@
+@require: mathml
 @import: document-class
 
 let open DocumentClass in
+let open Mathml in
 
 document (|
   title = {SATySFi-MathML},
 |) '<
   +p {
     Hello World!
+  }
+  +p{
+    ${E = m c^2}
+  }
+  +p{
+    ${x = \frac{-b + \sqrt{b^2 - 4ac}}{2a}}
   }
 >

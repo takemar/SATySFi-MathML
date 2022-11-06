@@ -5,10 +5,39 @@ module Mathml :> sig
   val \math : inline [math-text]
   val output-scripts : string -> (option string) -> (option string) -> string
 
+  val \text : math [inline-text]
+  val \frac : math [math-text, math-text]
+  val \sqrt : math [math-text]
+
 end = struct
 
-  val inline tinfo \math m = stringify-math tinfo m
+  val concat = List.fold-left (^) ` `
 
-  val output-scripts base sub-opt sup-opt = base
+  val tag (name : string) (inner : string) =
+    `<` ^ name ^ `>` ^ inner ^ `</` ^ name ^ `>`
+
+  val math-tag (tinfo : text-info) (name : string) (inner : list math-text) =
+    tag name (concat (List.map (fun (mt : math-text) ->
+      tag `mrow` (stringify-math tinfo mt)
+    ) inner))
+
+  val inline tinfo \math m = tag `math` (stringify-math tinfo m)
+
+  val output-scripts (base : string) (sub-opt : option string) (sup-opt : option string) =
+    match (sub-opt, sup-opt) with
+    | (None, None)           -> base
+    | (Some(sub), None)      -> tag `msub` ((tag `mrow` base) ^ (tag `mrow` sub))
+    | (None, Some(sup))      -> tag `msup` ((tag `mrow` base) ^ (tag `mrow` sup))
+    | (Some(sub), Some(sup)) -> tag `msub` ((tag `mrow` base) ^ (tag `mrow` sub) ^ (tag `mrow` sup))
+    end
+
+  val math tinfo \text (it : inline-text) =
+    tag `mtext` (stringify-inline tinfo it)
+
+  val math tinfo \frac (numer : math-text) (denom : math-text) =
+    math-tag tinfo `mfrac` [numer, denom]
+
+  val math tinfo \sqrt (inner : math-text) =
+    math-tag tinfo `msqrt` [inner]
 
 end
