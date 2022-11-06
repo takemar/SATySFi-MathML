@@ -7,7 +7,7 @@ Brilliant description comes here.
 """
 maintainer: "takemaro <info@takemaro.com>"
 authors: "takemaro <info@takemaro.com>"
-license: "MIT"
+license: "LGPL-3.0-or-later"
 homepage: "https://github.com/takemar/SATySFi-MathML"
 dev-repo: "git+https://github.com/takemar/SATySFi-MathML.git"
 bug-reports: "https://github.com/takemar/SATySFi-MathML/issues"
