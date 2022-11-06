@@ -1,50 +1,14 @@
-% @require: html-base
 @require: list
 
 module Mathml :> sig
 
-  val document : (|
-    title: inline-text,
-  |) -> block-text -> string
-
-  val +p : block [inline-text]
+  val \math : inline [math-text]
+  val output-scripts : string -> (option string) -> (option string) -> string
 
 end = struct
 
   val inline tinfo \math m = stringify-math tinfo m
 
   val output-scripts base sub-opt sup-opt = base
-
-  val concat = List.fold-left (^) ` `
-
-  val document record inner =
-    let tinfo = get-initial-text-info (command \math) output-scripts in
-      concat [
-        `<!DOCTYPE html><html><title>`,
-        stringify-inline tinfo record#title,
-        `</title></head><body>`,
-        stringify-block tinfo inner,
-        `</body></html>`,
-%        `<!DOCTYPE html>`,
-%        break tinfo,
-%        HTMLBase.tag tinfo `html` (fun tinfo ->
-%          concat [
-%            HTMLBase.tag tinfo `head` (fun tinfo ->
-%              HTMLBase.tag ?(bropt = false) tinfo `title` (fun tinfo ->
-%                stringify-inline tinfo record#title
-%              )
-%            ),
-%            HTMLBase.tag tinfo `body` (fun tinfo ->
-%              stringify-block tinfo inner
-%            )
-%          ]
-%        ),
-      ]
-
-  val block tinfo +p it =
-    `<p>` ^ stringify-inline tinfo it ^ `</p>`
-    %HTMLBase.tag tinfo `p` (fun tinfo ->
-    %  stringify-inline tinfo it
-    %)
 
 end

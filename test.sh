@@ -3,4 +3,6 @@ if [ "$(satysfi --version)" != "SATySFi version 0.1.0 alpha" ]; then
   exit 1
 fi
 cp src/mathml.satyh-html $HOME/.satysfi/dist/packages/
-satysfi --text-mode html tests/document.saty -o tests/document.html
+for f in `find tests/*.saty`; do
+  satysfi --text-mode html $f -o "${f%.*}.html"
+done

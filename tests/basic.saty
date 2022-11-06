@@ -1,6 +1,6 @@
-@require: mathml
+@import: document-class
 
-let open Mathml in
+let open DocumentClass in
 
 document (|
   title = {SATySFi-MathML},
