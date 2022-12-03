@@ -25,10 +25,10 @@ end = struct
 
   val output-scripts (base : string) (sub-opt : option string) (sup-opt : option string) =
     match (sub-opt, sup-opt) with
-    | (None, None)           -> base
-    | (Some(sub), None)      -> tag `msub` ((tag `mrow` base) ^ (tag `mrow` sub))
-    | (None, Some(sup))      -> tag `msup` ((tag `mrow` base) ^ (tag `mrow` sup))
-    | (Some(sub), Some(sup)) -> tag `msub` ((tag `mrow` base) ^ (tag `mrow` sub) ^ (tag `mrow` sup))
+    | (None, None)           -> tag `mrow` base
+    | (Some(sub), None)      -> tag `msub` ((tag `mrow` base) ^ sub)
+    | (None, Some(sup))      -> tag `msup` ((tag `mrow` base) ^ sup)
+    | (Some(sub), Some(sup)) -> tag `msubsup` ((tag `mrow` base) ^ sub ^ sup)
     end
 
   val math tinfo \text (it : inline-text) =
