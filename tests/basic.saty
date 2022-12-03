@@ -11,6 +11,9 @@ document (|
     Hello World!
   }
   +p{
+    ${42}
+  }
+  +p{
     ${E = m c^2}
   }
   +p{
