@@ -13,6 +13,9 @@ end = struct
 
   val concat = List.fold-left (^) ` `
 
+  val string-list-has needle =
+    List.fold-left (fun (memo : bool) x -> memo || string-same x needle) false
+
   val tag (name : string) (inner : string) =
     `<` ^ name ^ `>` ^ inner ^ `</` ^ name ^ `>`
 
@@ -23,12 +26,22 @@ end = struct
 
   val inline tinfo \math m = tag `math` (stringify-math tinfo m)
 
+  val math-element (x : string) =
+    if string-list-has x [`=`, `<`, `>`, `:`, `+`, `-`, `|`, `,`, `(`, `)`] then
+      tag `mo` x
+    else if string-list-has x [`0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`] then
+      tag `mn` x
+    else if string-length x == 1 then
+      tag `mi` x
+    else
+      tag `mrow` x
+
   val output-scripts (base : string) (sub-opt : option string) (sup-opt : option string) =
     match (sub-opt, sup-opt) with
-    | (None, None)           -> tag `mrow` base
-    | (Some(sub), None)      -> tag `msub` ((tag `mrow` base) ^ sub)
-    | (None, Some(sup))      -> tag `msup` ((tag `mrow` base) ^ sup)
-    | (Some(sub), Some(sup)) -> tag `msubsup` ((tag `mrow` base) ^ sub ^ sup)
+    | (None, None)           -> math-element base
+    | (Some(sub), None)      -> tag `msub` ((math-element base) ^ sub)
+    | (None, Some(sup))      -> tag `msup` ((math-element base) ^ sup)
+    | (Some(sub), Some(sup)) -> tag `msubsup` ((math-element base) ^ sub ^ sup)
     end
 
   val math tinfo \text (it : inline-text) =
