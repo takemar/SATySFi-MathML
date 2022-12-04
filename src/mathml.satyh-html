@@ -29,7 +29,11 @@ end = struct
   val inline tinfo \math m = tag `math` (stringify-math tinfo m)
 
   val math-element (x : string) =
-    if list-includes (Base.String.equal x) [`=`, `<`, `>`, `:`, `+`, `-`, `|`, `,`, `(`, `)`] then
+    if Base.String.equal x `<` then
+      tag `mo` `&lt;`
+    else if Base.String.equal x `>` then
+      tag `mo` `&gt;`
+    else if list-includes (Base.String.equal x) [`=`, `:`, `+`, `-`, `|`, `,`, `(`, `)`] then
       tag `mo` x
     else if list-includes (Base.String.equal x) [`0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`] then
       tag `mn` x
