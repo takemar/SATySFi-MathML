@@ -1,8 +1,8 @@
-@require: mathml
-@import: document-class
-
-let open DocumentClass in
-let open Mathml in
+#[dependencies [
+  (`mathml`, `0.0.1`),
+]]
+use open DocumentClass of `document-class`
+use package Mathml
 
 document (|
   title = {SATySFi-MathML},
@@ -17,6 +17,6 @@ document (|
     ${E = m c^2}
   }
   +p{
-    ${x = \frac{-b + \sqrt{b^2 - 4ac}}{2a}}
+    ${x = \Mathml.frac{-b + \Mathml.sqrt{b^2 - 4ac}}{2a}}
   }
 >

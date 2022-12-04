@@ -1,0 +1,15 @@
+language: "0.1.0"
+package: "mathml"
+version: "0.0.1"
+contents:
+  type: "library"
+  source_directories:
+    - "./src"
+  main_module: "Mathml"
+  dependencies:
+    -
+      name: "base"
+      requirements: [ "1.4.0" ]
+    -
+      name: "stdlib"
+      requirements: [ "0.0.1" ]

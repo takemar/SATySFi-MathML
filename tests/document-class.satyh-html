@@ -1,5 +1,5 @@
-% @require: html-base
-@require: mathml
+use package Mathml
+use package Stdlib
 
 module DocumentClass :> sig
 
@@ -11,7 +11,7 @@ module DocumentClass :> sig
 
 end = struct
 
-  val concat = List.fold-left (^) ` `
+  val concat = Stdlib.List.fold-left (^) ` `
 
   val document record inner =
     let tinfo = get-initial-text-info (command \Mathml.math) Mathml.output-scripts in

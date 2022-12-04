@@ -1,0 +1,13 @@
+locks:
+- name: base.1.4.0
+  location:
+    type: global
+    path: ./dist/packages/base/base.1.4.0/
+  dependencies: []
+  test_only: false
+- name: stdlib.0.0.1
+  location:
+    type: global
+    path: ./dist/packages/stdlib/stdlib.0.0.1/
+  dependencies: []
+  test_only: false
