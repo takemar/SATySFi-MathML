@@ -19,4 +19,7 @@ document (|
   +p{
     ${x = \Mathml.frac{-b + \Mathml.sqrt{b^2 - 4ac}}{2a}}
   }
+  +p{
+    ${\Mathml.frac{a + b}{2} > \Mathml.sqrt{ab} \Mathml.text!{&nbsp\;unless&nbsp\;} a = b}
+  }
 >
