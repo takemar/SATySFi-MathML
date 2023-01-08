@@ -1,5 +1,4 @@
-use package Base
-use package Stdlib
+use package open Base
 use HtmlUtil
 
 module Mathml :> sig
@@ -8,7 +7,7 @@ module Mathml :> sig
     type node =
       | Element of string * list node
       | Text of string
-    val parse : string -> Base.result (list node) (list (Base.Parser.parse-error Base.Char.t))
+    val parse : string -> result (list node) (list (Parser.parse-error Char.t))
     val render : list node -> string
   end
 
@@ -24,7 +23,7 @@ end = struct
   module HtmlUtil = HtmlUtil
 
   val list-includes f lst =
-    match Base.List.find f lst with
+    match List.find f lst with
     | Some(_) -> true
     | None -> false
     end
@@ -33,22 +32,74 @@ end = struct
     `<` ^ name ^ `>` ^ inner ^ `</` ^ name ^ `>`
 
   val math-tag (tinfo : text-info) (name : string) (inner : list math-text) =
-    tag name (Base.String.concat (Stdlib.List.map (fun (mt : math-text) ->
+    tag name (String.concat (List.map (fun (mt : math-text) ->
       tag `mrow` (stringify-math tinfo mt)
     ) inner))
 
-  val inline tinfo \math m = tag `math` (stringify-math tinfo m)
+  val inline tinfo \math m =
+    let open HtmlUtil in
+    let rec fold-nodes f lst =
+      let rec aux fn newrev old =
+        match old with
+        | [] -> newrev
+        | head :: [] -> List.append (List.reverse (fn head None)) newrev
+        | head :: (next :: tail) ->
+            match List.reverse (fn head next) with
+            | [] -> aux fn newrev (None :: tail)
+            | h :: t -> aux fn (List.append t newrev) (Some(h) :: tail)
+            end
+        end
+      in
+      lst
+      |> (List.map Option.some)
+      |> (List.cons None)
+      |> (aux f [])
+      |> List.reverse
+    in
+    let rec mod-nodes ns =
+      fold-nodes (fun xopt x2opt ->
+        let yopt =
+          match x2opt with
+          | Some(Element(name, content)) -> Some(Element(name, mod-nodes content))
+          | Some(Text(value)) -> Some(Text(value))
+          | None -> None
+          end
+        in
+        match (xopt, yopt) with
+        | (Some(Element(`mn`, c1)), Some(Element(`mn`, c2))) ->
+            [Element(`mn`, List.append c1 c2)]
+        | (Some(x), Some(y)) -> [x, y]
+        | (Some(x), None) -> [x]
+        | (None, Some(y)) -> [y]
+        | (None, None) -> []
+        end
+      ) ns
+    in
+    let unwrap opt =
+      match opt with
+      | Ok(x) -> x
+      | Err(_) ->
+          [Element(`merror`, [Element(`mtext`, [Text(`satysfi-mathml internal bug (parse error)`)])])]
+      end
+    in
+
+    stringify-math tinfo m
+    |> parse
+    |> unwrap
+    |> mod-nodes
+    |> render
+    |> tag `math`
 
   val math-element (x : string) =
-    if Base.String.equal x `<` then
+    if String.equal x `<` then
       tag `mo` `&lt;`
-    else if Base.String.equal x `>` then
+    else if String.equal x `>` then
       tag `mo` `&gt;`
-    else if list-includes (Base.String.equal x) [`=`, `:`, `+`, `-`, `|`, `,`, `(`, `)`] then
+    else if list-includes (String.equal x) [`=`, `:`, `+`, `-`, `|`, `,`, `(`, `)`] then
       tag `mo` x
-    else if list-includes (Base.String.equal x) [`0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`] then
+    else if list-includes (String.equal x) [`0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`] then
       tag `mn` x
-    else if Base.String.length x == 1 then
+    else if String.length x == 1 then
       tag `mi` x
     else
       tag `mrow` x

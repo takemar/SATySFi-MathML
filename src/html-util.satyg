@@ -34,7 +34,7 @@ end = struct
     |> List.map(fun node ->
       match node with
       | Element(name, content) -> `<` ^ name ^ `>` ^ (render content) ^ `</` ^ name ^ `>`
-      | Text(text) -> text
+      | Text(value) -> value
       end
     )
     |> String.concat
