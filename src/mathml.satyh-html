@@ -1,14 +1,15 @@
 use package Base
 use package Stdlib
-use HtmlParser
+use HtmlUtil
 
 module Mathml :> sig
 
-  module HtmlParser : sig
+  module HtmlUtil : sig
     type node =
       | Element of string * list node
       | Text of string
-    val run : string -> Base.result (list node) (list (Base.Parser.parse-error Base.Char.t))
+    val parse : string -> Base.result (list node) (list (Base.Parser.parse-error Base.Char.t))
+    val render : list node -> string
   end
 
   val \math : inline [math-text]
@@ -20,7 +21,7 @@ module Mathml :> sig
 
 end = struct
 
-  module HtmlParser = HtmlParser
+  module HtmlUtil = HtmlUtil
 
   val list-includes f lst =
     match Base.List.find f lst with

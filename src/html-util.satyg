@@ -1,12 +1,13 @@
 use package open Base
 
-module HtmlParser :> sig
+module HtmlUtil :> sig
 
   type node =
     | Element of string * list node
     | Text of string
 
-  val run : string -> result (list node) (list (Parser.parse-error Char.t))
+  val parse : string -> result (list node) (list (Parser.parse-error Char.t))
+  val render : list node -> string
 
 end = struct
 
@@ -14,7 +15,7 @@ end = struct
     | Element of string * list node
     | Text of string
 
-  val run =
+  val parse =
     let open Parser in
     let open StringParser in
 
@@ -28,4 +29,13 @@ end = struct
 
     StringParser.run (nodes << eof)
 
+  val rec render (nodes : list node) =
+    nodes
+    |> List.map(fun node ->
+      match node with
+      | Element(name, content) -> `<` ^ name ^ `>` ^ (render content) ^ `</` ^ name ^ `>`
+      | Text(text) -> text
+      end
+    )
+    |> String.concat
 end
