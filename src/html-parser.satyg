@@ -1,0 +1,31 @@
+use package open Base
+
+module HtmlParser :> sig
+
+  type node =
+    | Element of string * list node
+    | Text of string
+
+  val run : string -> result (list node) (list (Parser.parse-error Char.t))
+
+end = struct
+
+  type node =
+    | Element of string * list node
+    | Text of string
+
+  val run =
+    let open Parser in
+    let open StringParser in
+
+    let concat-chars cs = cs |> List.map(Char.to-string) |> String.concat in
+
+    let text = some (satisfy (Fn.non (Char.equal (Char.make `<`)))) <&> (fun x -> Text(concat-chars x)) in
+    let open-tag = (between (char (Char.make `<`)) (char (Char.make `>`)) (some alnum)) <&> concat-chars in
+    let close-tag name = (char (Char.make `<`)) >> (char (Char.make `/`)) >> (string name) >> (char (Char.make `>`)) in
+    let rec element s = (open-tag >>= (fun name -> (nodes <&> (fun c -> Element(name, c))) << (close-tag name))) s
+    and nodes s = (some (try (element <|> text))) s in
+
+    StringParser.run (nodes << eof)
+
+end

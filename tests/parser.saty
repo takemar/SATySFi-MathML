@@ -1,0 +1,23 @@
+#[dependencies [
+  (`base`, `1.4.0`),
+  (`mathml`, `0.0.1`),
+]]
+
+use package open Base
+use package open Mathml
+
+let rec render-html (nodes : list HtmlParser.node) =
+  nodes
+  |> List.map(fun node ->
+    match node with
+    | HtmlParser.Element(name, content) -> `<` ^ name ^ `>` ^ (render-html content) ^ `</` ^ name ^ `>`
+    | HtmlParser.Text(text) -> text
+    end
+  )
+  |> String.concat
+in
+
+match HtmlParser.run `<mi>E</mi><mo>=</mo><mi>m</mi><msup><mi>c</mi><mn>2</mn></msup>` with
+| Ok(x) -> `Ok: `# ^ (render-html x)
+| Err(es) -> `Err: `# ^ (es |> List.map(fun e -> e#token |> Option.map (fun t -> (Token.position t)#column |> Int.to-string) |> Option.unwrap-or(`None`)) |> String.concat)
+end

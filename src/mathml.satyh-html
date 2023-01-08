@@ -1,7 +1,15 @@
 use package Base
 use package Stdlib
+use HtmlParser
 
 module Mathml :> sig
+
+  module HtmlParser : sig
+    type node =
+      | Element of string * list node
+      | Text of string
+    val run : string -> Base.result (list node) (list (Base.Parser.parse-error Base.Char.t))
+  end
 
   val \math : inline [math-text]
   val output-scripts : string -> (option string) -> (option string) -> string
@@ -11,6 +19,8 @@ module Mathml :> sig
   val \sqrt : math [math-text]
 
 end = struct
+
+  module HtmlParser = HtmlParser
 
   val list-includes f lst =
     match Base.List.find f lst with
