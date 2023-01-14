@@ -11,14 +11,420 @@ module Mathml :> sig
     val render : list node -> string
   end
 
-  val \math : inline [math-text]
   val output-scripts : string -> (option string) -> (option string) -> string
+
+  val \math : inline [math-text]
+  % val +math : block [?(tag : inline-text) math-text]
+  % val \eqn : inline [?(tag : inline-text) math-text]
+  % val +math-list : block [list math-text]
+  % val \math-list : inline [list math-text]
+  % val +align : block [list (list math-text)]
+  % val \align : inline [list (list math-text)]
 
   val \text : math [inline-text]
   val \frac : math [math-text, math-text]
   val \sqrt : math [math-text]
+  val \lower : math [math-text, math-text]
+  val \upper : math [math-text, math-text]
+
+  % val \math-skip : math [length]
+  % val \math-color : math [color, math-text]
+  % val join : math-text -> list math-text -> math-text
+  % val join-boxes : context -> math-boxes -> list math-boxes -> math-boxes %TODO: rename this
+  % val half-length : length -> length -> length -> length -> length
+
+  % val \mathord : math [math-text]
+  % val \mathbin : math [math-text]
+  % val \mathrel : math [math-text]
+  % val \mathop : math [math-text]
+  % val \mathprefix : math [math-text]
+  % val \mathpunct : math [math-text]
+
+  % val \math-style : math [math-char-class, math-text]
+  % val \mathrm : math [math-text]
+  % val \mathbf : math [math-text]
+  % val \mathcal : math [math-text]
+  % val \mathfrak : math [math-text]
+  % val \mathbb : math [math-text]
+  % val \bm : math [math-text]
+  % val \mathit : math [math-text]
+  % val \mathsf : math [math-text]
+  % val \mathtt : math [math-text]
+
+  % val \math-style-token : math [math-char-class, string]
+  % val \mathit-token : math [string]
+  % val \mathrm-token : math [string]
+  % val \mathbf-token : math [string]
+
+  val \alpha   : math []
+  val \beta    : math []
+  val \gamma   : math []
+  val \delta   : math []
+  val \epsilon : math []
+  val \zeta    : math []
+  val \eta     : math []
+  val \theta   : math []
+  val \iota    : math []
+  val \kappa   : math []
+  val \lambda  : math []
+  val \mu      : math []
+  val \nu      : math []
+  val \xi      : math []
+  val \omicron : math []
+  val \pi      : math []
+  val \rho     : math []
+  val \sigma   : math []
+  val \tau     : math []
+  val \upsilon : math []
+  val \phi     : math []
+  val \chi     : math []
+  val \psi     : math []
+  val \omega   : math []
+  val \Alpha   : math []
+  val \Beta    : math []
+  val \Gamma   : math []
+  val \Delta   : math []
+  val \Epsilon : math []
+  val \Zeta    : math []
+  val \Eta     : math []
+  val \Theta   : math []
+  val \Iota    : math []
+  val \Kappa   : math []
+  val \Lambda  : math []
+  val \Mu      : math []
+  val \Nu      : math []
+  val \Xi      : math []
+  val \Omicron : math []
+  val \Pi      : math []
+  val \Rho     : math []
+  val \Sigma   : math []
+  val \Tau     : math []
+  val \Upsilon : math []
+  val \Phi     : math []
+  val \Chi     : math []
+  val \Psi     : math []
+  val \Omega   : math []
+
+  val \to : math []
+  val \pm : math []
+  val \mp : math []
+  val \times : math []
+  val \setminus : math []
+  val \ast : math []
+  val \circ : math []
+  val \bullet : math []
+  val \cap : math []
+  val \cup : math []
+  val \uplus : math []
+  val \sqcap : math []
+  val \sqcup : math []
+  val \wedge : math []
+  val \vee : math []
+  val \oplus : math []
+  val \ominus : math []
+  val \otimes : math []
+  val \oslash : math []
+  val \vdash : math []
+  val \nvdash : math []
+  val \dashv : math []
+  val \vDash : math []
+  val \nvDash : math []
+  val \Vdash : math []
+  val \nVdash : math []
+  val \colon-rel : math []
+  val \leq : math []
+  val \geq : math []
+  val \equiv : math []
+  val \nequiv : math []
+  val \neq : math []
+  val \sim : math []
+  val \nsim : math []
+  val \simeq : math []
+  val \nsimeq : math []
+  val \propto : math []
+  val \coloneq : math []
+  val \eqcolon : math []
+  val \in : math []
+  val \nin : math []
+  val \ni : math []
+  val \nni : math []
+  val \subset : math []
+  val \supset : math []
+  val \nsubset : math []
+  val \nsupset : math []
+  val \subseteq : math []
+  val \supseteq : math []
+  val \nsubseteq : math []
+  val \nsupseteq : math []
+  val \subsetneq : math []
+  val \supsetneq : math []
+  val \sqsubset : math []
+  val \sqsupset : math []
+  val \sqsubseteq : math []
+  val \sqsupseteq : math []
+  val \nsqsubseteq : math []
+  val \nsqsupseteq : math []
+  val \sqsubsetneq : math []
+  val \sqsupsetneq : math []
+  val \prec : math []
+  val \succ : math []
+  val \nprec : math []
+  val \nsucc : math []
+  val \preccurlyeq : math []
+  val \succcurlyeq : math []
+  val \precsim : math []
+  val \succsim : math []
+  val \npreccurlyeq : math []
+  val \nsucccurlyeq : math []
+  val \emptyset : math []
+  val \infty : math []
+  val \top : math []
+  val \bot : math []
+  val \therefore : math []
+  val \because : math []
+  val \forall : math []
+  val \exists : math []
+  val \nexists : math []
+  val \bigcirc : math []
+  val \cdot  : math []
+  val \ldots : math []
+  val \cdots : math []
+  val \vdots : math []
+  val \ddots : math []
+  val \backddots : math []
+
+  val \lim : math []
+  val \colim : math []
+  val \max : math []
+  val \min : math []
+  val \inf : math []
+  val \sup : math []
+
+  val \sin : math []
+  val \cos : math []
+  val \tan : math []
+  val \cot : math []
+  val \sec : math []
+  val \csc : math []
+  val \log : math []
+  val \tr : math []
+  val \det : math []
+  val \dom : math []
+  val \cod : math []
+  val \Ker : math []
+  val \Im : math []
+
+  val \sum : math []
+  val \prod : math []
+  val \coprod : math []
+  val \bigwedge : math []
+  val \bigvee : math []
+  val \bigcap : math []
+  val \bigcup : math []
+
+  val \lnot : math []
+  val \land : math []
+  val \lor : math []
+
+  val \Leftarrow : math []
+  val \Rightarrow : math []
+  val \Leftrightarrow : math []
+  val \Uparrow : math []
+  val \Downarrow : math []
+  val \Updownarrow : math []
+  val \nRightarrow : math []
+  val \nLeftarrow : math []
+  val \nLeftrightarrow : math []
+  val \leftarrow : math []
+  val \rightarrow : math []
+  val \uparrow : math []
+  val \downarrow : math []
+  val \updownarrow : math []
+  val \nwarrow : math []
+  val \nearrow : math []
+  val \searrow : math []
+  val \swarrow : math []
+  val \nleftarrow : math []
+  val \nrightarrow : math []
+  val \nleftrightarrow : math []
+  val \mapsto : math []
+  val \hookleftarrow : math []
+  val \hookrightarrow : math []
+  val \rightarrowtail : math []
+  val \leftarrowtail : math []
+  val \twoheadleftarrow : math []
+  val \twoheadrightarrow : math []
+  val \twoheaduparrow : math []
+  val \twoheaddownarrow : math []
+  val \leftharpoonup : math []
+  val \leftharpoondown : math []
+  val \rightharpoonup : math []
+  val \rightharpoondown : math []
+  val \rightleftharpoons : math []
+  val \upharpoonright : math []
+  val \upharpoonleft : math []
+  val \downharpoonright : math []
+  val \downharpoonleft : math []
+  val \longleftarrow : math []
+  val \longrightarrow : math []
+  val \longleftrightarrow : math []
+  val \Longleftarrow : math []
+  val \Longrightarrow : math []
+  val \Longleftrightarrow : math []
+  val \circlearrowleft : math []
+  val \circlearrowright : math []
+
+  val \between : math []
+  val \pitchfork : math []
+  val \intercal : math []
+  val \ll : math []
+  val \gg : math []
+  val \lll : math []
+  val \ggg : math []
+  val \leqq : math []
+  val \geqq : math []
+  val \lneqq : math []
+  val \gneqq : math []
+  val \lnsim : math []
+  val \gnsim : math []
+  val \precnsim : math []
+  val \succnsim : math []
+  val \Subset : math []
+  val \Supset : math []
+  val \Cap : math []
+  val \Cup : math []
+  val \lhd : math []
+  val \rhd : math []
+  val \unlhd : math []
+  val \unrhd : math []
+  val \triangleleft : math []
+  val \triangleright : math []
+  val \trianglelefteq : math []
+  val \trianglerighteq : math []
+  val \backsim : math []
+  val \backsimeq : math []
+  val \eqcirc : math []
+  val \cong : math []
+  val \simneq : math []
+  val \ncong : math []
+  val \approx : math []
+  val \napprox : math []
+  val \approxeq : math []
+  val \curlyeqprec : math []
+  val \curlyeqsucc : math []
+  val \lessdot : math []
+  val \gtrdot : math []
+  val \lesssim : math []
+  val \gtrsim : math []
+  val \nlesssim : math []
+  val \ngtrsim : math []
+  val \lessgtr : math []
+  val \gtrless : math []
+  val \nlessgtr : math []
+  val \ngtrless : math []
+  val \ntriangleleft : math []
+  val \ntriangleright : math []
+  val \ntrianglelefteq : math []
+  val \ntrianglerighteq : math []
+  val \lesseqgtr : math []
+  val \gtreqless : math []
+  val \nless : math []
+  val \ngtr : math []
+  val \nleq : math []
+  val \ngeq : math []
+  val \asymp : math []
+  val \nasymp : math []
+  val \circeq : math []
+  val \Bumpeq : math []
+  val \bumpeq : math []
+  val \doteq : math []
+  val \doteqdot : math []
+  val \fallingdotseq : math []
+  val \risingdotseq : math []
+  val \mid : math []
+  val \nmid : math []
+  val \parallel : math []
+  val \nparallel : math []
+  val \Vvdash : math []
+  val \VDash : math []
+  val \coloncoloneq : math []
+  val \leqslant : math []
+  val \geqslant : math []
+  val \dashV : math []
+  val \Dashv : math []
+  val \DashV : math []
+  val \preceq : math []
+  val \succeq : math []
+  val \amalg : math []
+  val \dotplus : math []
+  val \divideontimes : math []
+  val \odot : math []
+  val \circledcirc : math []
+  val \circledast : math []
+%  val \circledeq : math []
+  val \circleddash : math []
+  val \boxplus : math []
+  val \boxminus : math []
+  val \boxtimes : math []
+  val \boxdot : math []
+  val \curlyvee : math []
+  val \curlywedge : math []
+  val \Join : math []
+  val \ltimes : math []
+  val \rtimes : math []
+  val \leftthreetimes : math []
+  val \rightthreetimes : math []
+  val \wr : math []
+  val \diamond : math []
+  val \star : math []
+  val \complement : math []
+  val \angle : math []
+  val \measuredangle : math []
+  val \sphericalangle : math []
+
+  val \int : math []
+
+  val \ordd : math []
+  val \partial : math []
+  val \nabla : math []
+
+  val \paren : math [math-text]
+  val \app : math [math-text, math-text]
+  val \angle-bracket : math [math-text]
+  val \brace : math [math-text]
+  val \sqbracket : math [math-text]
+  val \abs : math [math-text]
+  val \norm : math [math-text]
+  val \floor : math [math-text]
+  val \ceil : math [math-text]
+  val \set : math [math-text]
+  val \setsep : math [math-text, math-text]
+  val \cases : math [list (math-text * inline-text)]
+
+  % type paren = Pervasives.paren %TODO (enhance): remove this
+  % val paren-left : paren
+  % val paren-right : paren
+  % val paren : context -> math-boxes -> math-boxes
+  % val angle-left : length -> paren
+  % val angle-right : length -> paren
+  % val brace-left : paren
+  % val brace-right : paren
+  % val sqbracket-left : paren
+  % val sqbracket-right : paren
+  % val floor-left : paren
+  % val floor-right : paren
+  % val ceil-left : paren
+  % val ceil-right : paren
+  % val abs-left : paren
+  % val abs-right : paren
+  % val norm-left : paren
+  % val norm-right : paren
+  % val empty-paren : paren
+  % val bar-middle : paren
+  % val slash-middle : paren
 
 end = struct
+
 
   module HtmlUtil = HtmlUtil
 
@@ -31,10 +437,34 @@ end = struct
   val tag (name : string) (inner : string) =
     `<` ^ name ^ `>` ^ inner ^ `</` ^ name ^ `>`
 
+  val math-to-html (tinfo : text-info) (mt : math-text) =
+    tag `mrow` (stringify-math tinfo mt)
+
   val math-tag (tinfo : text-info) (name : string) (inner : list math-text) =
-    tag name (String.concat (List.map (fun (mt : math-text) ->
-      tag `mrow` (stringify-math tinfo mt)
-    ) inner))
+    tag name (String.concat (List.map (math-to-html tinfo) inner))
+
+  val math-element (x : string) =
+    if String.equal x `<` then
+      tag `mo` `&lt;`
+    else if String.equal x `>` then
+      tag `mo` `&gt;`
+    else if list-includes (String.equal x) [`=`, `:`, `+`, `-`, `|`, `,`, `(`, `)`] then
+      tag `mo` x
+    else if list-includes (String.equal x) [`0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`] then
+      tag `mn` x
+    else if String.length x == 1 then
+      tag `mi` x
+    else
+      tag `mrow` x
+
+
+  val output-scripts (base : string) (subopt : option string) (supopt : option string) =
+    match (subopt, supopt) with
+    | (None, None)           -> math-element base
+    | (Some(sub), None)      -> tag `msub` ((math-element base) ^ sub)
+    | (None, Some(sup))      -> tag `msup` ((math-element base) ^ sup)
+    | (Some(sub), Some(sup)) -> tag `msubsup` ((math-element base) ^ sub ^ sup)
+    end
 
   val inline tinfo \math m =
     let open HtmlUtil in
@@ -90,27 +520,6 @@ end = struct
     |> render
     |> tag `math`
 
-  val math-element (x : string) =
-    if String.equal x `<` then
-      tag `mo` `&lt;`
-    else if String.equal x `>` then
-      tag `mo` `&gt;`
-    else if list-includes (String.equal x) [`=`, `:`, `+`, `-`, `|`, `,`, `(`, `)`] then
-      tag `mo` x
-    else if list-includes (String.equal x) [`0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`] then
-      tag `mn` x
-    else if String.length x == 1 then
-      tag `mi` x
-    else
-      tag `mrow` x
-
-  val output-scripts (base : string) (sub-opt : option string) (sup-opt : option string) =
-    match (sub-opt, sup-opt) with
-    | (None, None)           -> math-element base
-    | (Some(sub), None)      -> tag `msub` ((math-element base) ^ sub)
-    | (None, Some(sup))      -> tag `msup` ((math-element base) ^ sup)
-    | (Some(sub), Some(sup)) -> tag `msubsup` ((math-element base) ^ sub ^ sup)
-    end
 
   val math tinfo \text (it : inline-text) =
     tag `mtext` (stringify-inline tinfo it)
@@ -120,5 +529,405 @@ end = struct
 
   val math tinfo \sqrt (inner : math-text) =
     math-tag tinfo `msqrt` [inner]
+
+  val math tinfo \lower (base : math-text) (lower : math-text) =
+    math-tag tinfo `munder` [base, lower]
+
+  val math tinfo \upper (base : math-text) (upper : math-text) =
+    math-tag tinfo `mover` [base, upper]
+
+
+  val math tinfo \alpha   = tag `mi` `&alpha;`
+  val math tinfo \beta    = tag `mi` `&beta;`
+  val math tinfo \gamma   = tag `mi` `&gamma;`
+  val math tinfo \delta   = tag `mi` `&delta;`
+  val math tinfo \epsilon = tag `mi` `&epsilon;`
+  val math tinfo \zeta    = tag `mi` `&zeta;`
+  val math tinfo \eta     = tag `mi` `&eta;`
+  val math tinfo \theta   = tag `mi` `&theta;`
+  val math tinfo \iota    = tag `mi` `&iota;`
+  val math tinfo \kappa   = tag `mi` `&kappa;`
+  val math tinfo \lambda  = tag `mi` `&lambda;`
+  val math tinfo \mu      = tag `mi` `&mu;`
+  val math tinfo \nu      = tag `mi` `&nu;`
+  val math tinfo \xi      = tag `mi` `&xi;`
+  val math tinfo \omicron = tag `mi` `&omicron;`
+  val math tinfo \pi      = tag `mi` `&pi;`
+  val math tinfo \rho     = tag `mi` `&rho;`
+  val math tinfo \sigma   = tag `mi` `&sigma;`
+  val math tinfo \tau     = tag `mi` `&tau;`
+  val math tinfo \upsilon = tag `mi` `&upsilon;`
+  val math tinfo \phi     = tag `mi` `&phi;`
+  val math tinfo \chi     = tag `mi` `&chi;`
+  val math tinfo \psi     = tag `mi` `&psi;`
+  val math tinfo \omega   = tag `mi` `&omega;`
+  val math tinfo \Alpha   = tag `mi` `&Alpha;`
+  val math tinfo \Beta    = tag `mi` `&Beta;`
+  val math tinfo \Gamma   = tag `mi` `&Gamma;`
+  val math tinfo \Delta   = tag `mi` `&Delta;`
+  val math tinfo \Epsilon = tag `mi` `&Epsilon;`
+  val math tinfo \Zeta    = tag `mi` `&Zeta;`
+  val math tinfo \Eta     = tag `mi` `&Eta;`
+  val math tinfo \Theta   = tag `mi` `&Theta;`
+  val math tinfo \Iota    = tag `mi` `&Iota;`
+  val math tinfo \Kappa   = tag `mi` `&Kappa;`
+  val math tinfo \Lambda  = tag `mi` `&Lambda;`
+  val math tinfo \Mu      = tag `mi` `&Mu;`
+  val math tinfo \Nu      = tag `mi` `&Nu;`
+  val math tinfo \Xi      = tag `mi` `&Xi;`
+  val math tinfo \Omicron = tag `mi` `&Omicron;`
+  val math tinfo \Pi      = tag `mi` `&Pi;`
+  val math tinfo \Rho     = tag `mi` `&Rho;`
+  val math tinfo \Sigma   = tag `mi` `&Sigma;`
+  val math tinfo \Tau     = tag `mi` `&Tau;`
+  val math tinfo \Upsilon = tag `mi` `&Upsilon;`
+  val math tinfo \Phi     = tag `mi` `&Phi;`
+  val math tinfo \Chi     = tag `mi` `&Chi;`
+  val math tinfo \Psi     = tag `mi` `&Psi;`
+  val math tinfo \Omega   = tag `mi` `&Omega;`
+
+  val math tinfo \to           = tag `mo` `&rightarrow;`
+  val math tinfo \pm           = tag `mo` `&pm;`
+  val math tinfo \mp           = tag `mo` `&mp;`
+  val math tinfo \times        = tag `mo` `&times;`
+  val math tinfo \setminus     = tag `mo` `&setminus;`
+  val math tinfo \ast          = tag `mo` `&lowast;`
+  val math tinfo \circ         = tag `mo` `&SmallCircle;`
+  val math tinfo \bullet       = tag `mo` `&#x2219;`
+  val math tinfo \cap          = tag `mo` `&cap;`
+  val math tinfo \cup          = tag `mo` `&cup;`
+  val math tinfo \uplus        = tag `mo` `&uplus;`
+  val math tinfo \sqcap        = tag `mo` `&sqcap;`
+  val math tinfo \sqcup        = tag `mo` `&sqcup;`
+  val math tinfo \wedge        = tag `mo` `&wedge;`
+  val math tinfo \vee          = tag `mo` `&vee;`
+  val math tinfo \oplus        = tag `mo` `&oplus;`
+  val math tinfo \ominus       = tag `mo` `&ominus;`
+  val math tinfo \otimes       = tag `mo` `&otimes;`
+  val math tinfo \oslash       = tag `mo` `&osol;`
+  val math tinfo \vdash        = tag `mo` `&vdash;`
+  val math tinfo \nvdash       = tag `mo` `&nvdash;`
+  val math tinfo \dashv        = tag `mo` `&dashv;`
+  val math tinfo \vDash        = tag `mo` `&vDash;`
+  val math tinfo \nvDash       = tag `mo` `&nvDash;`
+  val math tinfo \Vdash        = tag `mo` `&Vdash;`
+  val math tinfo \nVdash       = tag `mo` `&nVdash;`
+  val math tinfo \colon-rel    = tag `mo` `:`
+  val math tinfo \leq          = tag `mo` `&leq;`
+  val math tinfo \geq          = tag `mo` `&geq;`
+  val math tinfo \equiv        = tag `mo` `&equiv;`
+  val math tinfo \nequiv       = tag `mo` `&nequiv;`
+  val math tinfo \neq          = tag `mo` `&ne;`
+  val math tinfo \sim          = tag `mo` `&sim;`
+  val math tinfo \nsim         = tag `mo` `&nsim;`
+  val math tinfo \simeq        = tag `mo` `&simeq;`
+  val math tinfo \nsimeq       = tag `mo` `&nsimeq;`
+  val math tinfo \propto       = tag `mo` `&propto;`
+  val math tinfo \coloneq      = tag `mo` `&coloneq;`
+  val math tinfo \eqcolon      = tag `mo` `&eqcolon;`
+  val math tinfo \in           = tag `mo` `&in;`
+  val math tinfo \nin          = tag `mo` `&notin;`
+  val math tinfo \ni           = tag `mo` `&ni;`
+  val math tinfo \nni          = tag `mo` `&notni;`
+  val math tinfo \subset       = tag `mo` `&subset;`
+  val math tinfo \supset       = tag `mo` `&supset;`
+  val math tinfo \nsubset      = tag `mo` `&nsub;`
+  val math tinfo \nsupset      = tag `mo` `&nsup;`
+  val math tinfo \subseteq     = tag `mo` `&subseteq;`
+  val math tinfo \supseteq     = tag `mo` `&supseteq;`
+  val math tinfo \nsubseteq    = tag `mo` `&nsubseteq;`
+  val math tinfo \nsupseteq    = tag `mo` `&nsupseteq;`
+  val math tinfo \subsetneq    = tag `mo` `&subsetneq;`
+  val math tinfo \supsetneq    = tag `mo` `&supsetneq;`
+  val math tinfo \sqsubset     = tag `mo` `&sqsubset;`
+  val math tinfo \sqsupset     = tag `mo` `&sqsupset;`
+  val math tinfo \sqsubseteq   = tag `mo` `&sqsubseteq;`
+  val math tinfo \sqsupseteq   = tag `mo` `&sqsupseteq;`
+  val math tinfo \nsqsubseteq  = tag `mo` `&nsqsube;`
+  val math tinfo \nsqsupseteq  = tag `mo` `&nsqsupe;`
+  val math tinfo \sqsubsetneq  = tag `mo` `&#x22e4;`
+  val math tinfo \sqsupsetneq  = tag `mo` `&#x22e5;`
+  val math tinfo \prec         = tag `mo` `&prec;`
+  val math tinfo \succ         = tag `mo` `&succ;`
+  val math tinfo \nprec        = tag `mo` `&nprec;`
+  val math tinfo \nsucc        = tag `mo` `&nsucc;`
+  val math tinfo \preccurlyeq  = tag `mo` `&preccurlyeq;`
+  val math tinfo \succcurlyeq  = tag `mo` `&succcurlyeq;`
+  val math tinfo \precsim      = tag `mo` `&precsim;`
+  val math tinfo \succsim      = tag `mo` `&succsim;`
+  val math tinfo \npreccurlyeq = tag `mo` `&nprcue;`
+  val math tinfo \nsucccurlyeq = tag `mo` `&nsccue;`
+  val math tinfo \emptyset     = tag `mi` `&emptyset;`
+  val math tinfo \infty        = tag `mi` `&infin;`
+  val math tinfo \top          = tag `mi` `&top;`
+  val math tinfo \bot          = tag `mi` `&bot;`
+  val math tinfo \therefore    = tag `mo` `&therefore;`
+  val math tinfo \because      = tag `mo` `&because;`
+  val math tinfo \forall       = tag `mo` `&forall;`
+  val math tinfo \exists       = tag `mo` `&exist;`
+  val math tinfo \nexists      = tag `mo` `&nexists;`
+  val math tinfo \bigcirc      = tag `mo` `&bigcirc;`
+  val math tinfo \cdot         = tag `mo` `&sdot;`
+  val math tinfo \ldots        = tag `mi` `&hellip;`
+  val math tinfo \cdots        = tag `mi` `&ctdot;`
+  val math tinfo \vdots        = tag `mi` `&vellip;`
+  val math tinfo \ddots        = tag `mi` `&dtdot;`
+  val math tinfo \backddots    = tag `mi` `&utdot;`
+
+
+  val vop tinfo base subopt supopt =
+    match (subopt, supopt) with
+    | (None, None) -> base
+    | (Some(sub), None) ->
+        tag `munder` (base ^ (math-to-html tinfo sub))
+    | (None, Some(sup)) ->
+        tag `mover` (base ^ (math-to-html tinfo sup))
+    | (Some(sub), Some(sup)) ->
+        tag `munderover` (base ^ (math-to-html tinfo sub) ^ (math-to-html tinfo sub))
+    end
+
+  val math-function name =
+    (tag `mi` name) ^ (tag `mo` `&ApplyFunction;`)
+
+
+  val math tinfo \lim with sub sup   = vop tinfo `lim` sub sup
+  val math tinfo \colim with sub sup = vop tinfo `colim` sub sup
+  val math tinfo \max with sub sup   = vop tinfo `max` sub sup
+  val math tinfo \min with sub sup   = vop tinfo `min` sub sup
+  val math tinfo \inf with sub sup   = vop tinfo `inf` sub sup
+  val math tinfo \sup with sub sup   = vop tinfo `sup` sub sup
+
+  val math tinfo \sin = math-function `sin`
+  val math tinfo \cos = math-function `cos`
+  val math tinfo \tan = math-function `tan`
+  val math tinfo \cot = math-function `cot`
+  val math tinfo \sec = math-function `sec`
+  val math tinfo \csc = math-function `csc`
+  val math tinfo \log = math-function `log`
+  val math tinfo \tr  = math-function `tr`
+  val math tinfo \det = math-function `det`
+  val math tinfo \dom = math-function `dom`
+  val math tinfo \cod = math-function `cod`
+  val math tinfo \Ker = math-function `Ker`
+  val math tinfo \Im  = math-function `Im`
+
+  val math tinfo \sum with sub sup      = vop tinfo `&sum;` sub sup
+  val math tinfo \prod with sub sup     = vop tinfo `&prod;` sub sup
+  val math tinfo \coprod with sub sup   = vop tinfo `&coprod;` sub sup
+  val math tinfo \bigwedge with sub sup = vop tinfo `&bigwedge;` sub sup
+  val math tinfo \bigvee with sub sup   = vop tinfo `&bigvee;` sub sup
+  val math tinfo \bigcap with sub sup   = vop tinfo `&bigcap;` sub sup
+  val math tinfo \bigcup with sub sup   = vop tinfo `&bigcup;` sub sup
+
+
+  val math tinfo \lnot               = tag `mi` `&not;`
+  val math tinfo \land               = tag `mo` `&and;`
+  val math tinfo \lor                = tag `mo` `&or;`
+  val math tinfo \Leftarrow          = tag `mo` `&Leftarrow;`
+  val math tinfo \Rightarrow         = tag `mo` `&Rightarrow;`
+  val math tinfo \Leftrightarrow     = tag `mo` `&Leftrightarrow;`
+  val math tinfo \Uparrow            = tag `mo` `&Uparrow;`
+  val math tinfo \Downarrow          = tag `mo` `&Downarrow;`
+  val math tinfo \Updownarrow        = tag `mo` `&Updownarrow;`
+  val math tinfo \nLeftarrow         = tag `mo` `&nLeftarrow;`
+  val math tinfo \nRightarrow        = tag `mo` `&nRightarrow;`
+  val math tinfo \nLeftrightarrow    = tag `mo` `&nLeftrightarrow;`
+  val math tinfo \leftarrow          = tag `mo` `&leftarrow;`
+  val math tinfo \rightarrow         = tag `mo` `&rightarrow;`
+  val math tinfo \uparrow            = tag `mo` `&uparrow;`
+  val math tinfo \downarrow          = tag `mo` `&downarrow;`
+  val math tinfo \updownarrow        = tag `mo` `&updownarrow;`
+  val math tinfo \nwarrow            = tag `mo` `&nwarrow;`
+  val math tinfo \nearrow            = tag `mo` `&nearrow;`
+  val math tinfo \searrow            = tag `mo` `&searrow;`
+  val math tinfo \swarrow            = tag `mo` `&swarrow;`
+  val math tinfo \nleftarrow         = tag `mo` `&nleftarrow;`
+  val math tinfo \nrightarrow        = tag `mo` `&nrightarrow;`
+  val math tinfo \nleftrightarrow    = tag `mo` `&nleftrightarrow;`
+  val math tinfo \mapsto             = tag `mo` `&mapsto;`
+  val math tinfo \hookleftarrow      = tag `mo` `&hookleftarrow;`
+  val math tinfo \hookrightarrow     = tag `mo` `&hookrightarrow;`
+  val math tinfo \rightarrowtail     = tag `mo` `&rightarrowtail;`
+  val math tinfo \leftarrowtail      = tag `mo` `&leftarrowtail;`
+  val math tinfo \twoheadleftarrow   = tag `mo` `&twoheadleftarrow;`
+  val math tinfo \twoheadrightarrow  = tag `mo` `&twoheadrightarrow;`
+  val math tinfo \twoheaduparrow     = tag `mo` `&Uarr;`
+  val math tinfo \twoheaddownarrow   = tag `mo` `&Darr;`
+  val math tinfo \leftharpoonup      = tag `mo` `&leftharpoonup;`
+  val math tinfo \leftharpoondown    = tag `mo` `&leftharpoondown;`
+  val math tinfo \rightharpoonup     = tag `mo` `&rightharpoonup;`
+  val math tinfo \rightharpoondown   = tag `mo` `&rightharpoondown;`
+  val math tinfo \rightleftharpoons  = tag `mo` `&rightleftharpoons;`
+  val math tinfo \upharpoonright     = tag `mo` `&upharpoonright;`
+  val math tinfo \upharpoonleft      = tag `mo` `&upharpoonleft;`
+  val math tinfo \downharpoonright   = tag `mo` `&downharpoonright;`
+  val math tinfo \downharpoonleft    = tag `mo` `&downharpoonleft;`
+  val math tinfo \longleftarrow      = tag `mo` `&longleftarrow;`
+  val math tinfo \longrightarrow     = tag `mo` `&longrightarrow;`
+  val math tinfo \longleftrightarrow = tag `mo` `&longleftrightarrow;`
+  val math tinfo \Longleftarrow      = tag `mo` `&Longleftarrow;`
+  val math tinfo \Longrightarrow     = tag `mo` `&Longrightarrow;`
+  val math tinfo \Longleftrightarrow = tag `mo` `&Longleftrightarrow;`
+  val math tinfo \circlearrowleft    = tag `mo` `&circlearrowleft;`
+  val math tinfo \circlearrowright   = tag `mo` `&circlearrowright;`
+  val math tinfo \between            = tag `mo` `&between;`
+  val math tinfo \pitchfork          = tag `mo` `&pitchfork;`
+  val math tinfo \intercal           = tag `mo` `&intercal;`
+  val math tinfo \ll                 = tag `mo` `&ll;`
+  val math tinfo \gg                 = tag `mo` `&gg;`
+  val math tinfo \lll                = tag `mo` `&Ll;`
+  val math tinfo \ggg                = tag `mo` `&ggg;`
+  val math tinfo \leqq               = tag `mo` `&leqq;`
+  val math tinfo \geqq               = tag `mo` `&geqq;`
+  val math tinfo \lneqq              = tag `mo` `&lneqq;`
+  val math tinfo \gneqq              = tag `mo` `&gneqq;`
+  val math tinfo \lnsim              = tag `mo` `&lnsim;`
+  val math tinfo \gnsim              = tag `mo` `&gnsim;`
+  val math tinfo \precnsim           = tag `mo` `&precnsim;`
+  val math tinfo \succnsim           = tag `mo` `&succnsim;`
+  val math tinfo \Subset             = tag `mo` `&Subset;`
+  val math tinfo \Supset             = tag `mo` `&Supset;`
+  val math tinfo \Cap                = tag `mo` `&Cap;`
+  val math tinfo \Cup                = tag `mo` `&Cup;`
+  val math tinfo \lhd                = tag `mo` `&vartriangleleft;`
+  val math tinfo \rhd                = tag `mo` `&vartriangleright;`
+  val math tinfo \unlhd              = tag `mo` `&trianglelefteq;`
+  val math tinfo \unrhd              = tag `mo` `&trianglerighteq;`
+  val math tinfo \triangleleft       = tag `mo` `&vartriangleleft;`
+  val math tinfo \triangleright      = tag `mo` `&vartriangleright;`
+  val math tinfo \trianglelefteq     = tag `mo` `&trianglelefteq;`
+  val math tinfo \trianglerighteq    = tag `mo` `&trianglerighteq;`
+  val math tinfo \backsim            = tag `mo` `&backsim;`
+  val math tinfo \backsimeq          = tag `mo` `&backsimeq;`
+  val math tinfo \eqcirc             = tag `mo` `&eqcirc;`
+  val math tinfo \cong               = tag `mo` `&cong;`
+  val math tinfo \simneq             = tag `mo` `&simne;`
+  val math tinfo \ncong              = tag `mo` `&ncong;`
+  val math tinfo \approx             = tag `mo` `&approx;`
+  val math tinfo \napprox            = tag `mo` `&napprox;`
+  val math tinfo \approxeq           = tag `mo` `&approxeq;`
+  val math tinfo \curlyeqprec        = tag `mo` `&curlyeqprec;`
+  val math tinfo \curlyeqsucc        = tag `mo` `&curlyeqsucc;`
+  val math tinfo \lessdot            = tag `mo` `&lessdot;`
+  val math tinfo \gtrdot             = tag `mo` `&gtrdot;`
+  val math tinfo \lesssim            = tag `mo` `&lesssim;`
+  val math tinfo \gtrsim             = tag `mo` `&gtrsim;`
+  val math tinfo \nlesssim           = tag `mo` `&nlsim;`
+  val math tinfo \ngtrsim            = tag `mo` `&ngsim;`
+  val math tinfo \lessgtr            = tag `mo` `&lessgtr;`
+  val math tinfo \gtrless            = tag `mo` `&gtrless;`
+  val math tinfo \nlessgtr           = tag `mo` `&ntlg;`
+  val math tinfo \ngtrless           = tag `mo` `&ntgl;`
+  val math tinfo \ntriangleleft      = tag `mo` `&ntriangleleft;`
+  val math tinfo \ntriangleright     = tag `mo` `&ntriangleright;`
+  val math tinfo \ntrianglelefteq    = tag `mo` `&ntrianglelefteq;`
+  val math tinfo \ntrianglerighteq   = tag `mo` `&ntrianglerighteq;`
+  val math tinfo \lesseqgtr          = tag `mo` `&lesseqgtr;`
+  val math tinfo \gtreqless          = tag `mo` `&gtreqless;`
+  val math tinfo \nless              = tag `mo` `&nless;`
+  val math tinfo \ngtr               = tag `mo` `&ngtr;`
+  val math tinfo \nleq               = tag `mo` `&nleq;`
+  val math tinfo \ngeq               = tag `mo` `&ngeq;`
+  val math tinfo \asymp              = tag `mo` `&asympeq;`
+  val math tinfo \nasymp             = tag `mo` `&NotCupCap;`
+  val math tinfo \circeq             = tag `mo` `&circeq;`
+  val math tinfo \Bumpeq             = tag `mo` `&Bumpeq;`
+  val math tinfo \bumpeq             = tag `mo` `&bumpeq;`
+  val math tinfo \doteq              = tag `mo` `&doteq;`
+  val math tinfo \doteqdot           = tag `mo` `&doteqdot;`
+  val math tinfo \fallingdotseq      = tag `mo` `&fallingdotseq;`
+  val math tinfo \risingdotseq       = tag `mo` `&risingdotseq;`
+  val math tinfo \mid                = tag `mo` `&mid;`
+  val math tinfo \nmid               = tag `mo` `&nmid;`
+  val math tinfo \parallel           = tag `mo` `&parallel;`
+  val math tinfo \nparallel          = tag `mo` `&nparallel;`
+  val math tinfo \Vvdash             = tag `mo` `&Vvdash;`
+  val math tinfo \VDash              = tag `mo` `&VDash;`
+  val math tinfo \coloncoloneq       = tag `mo` `&Colone;`
+  val math tinfo \leqslant           = tag `mo` `&leqslant;`
+  val math tinfo \geqslant           = tag `mo` `&geqslant;`
+  val math tinfo \dashV              = tag `mo` `&#x2ae3;`
+  val math tinfo \Dashv              = tag `mo` `&Dashv;`
+  val math tinfo \DashV              = tag `mo` `&#x2ae5;`
+  val math tinfo \preceq             = tag `mo` `&preceq;`
+  val math tinfo \succeq             = tag `mo` `&succeq;`
+  val math tinfo \amalg              = tag `mo` `&amalg;`
+  val math tinfo \dotplus            = tag `mo` `&dotplus`
+  val math tinfo \divideontimes      = tag `mo` `&divideontimes;`
+  val math tinfo \odot               = tag `mo` `&odot;`
+  val math tinfo \circledcirc        = tag `mo` `&circledcirc;`
+  val math tinfo \circledast         = tag `mo` `&circledast;`
+% val math tinfo \circledeq          = tag `mo` `&#x229c;`
+  val math tinfo \circleddash        = tag `mo` `&circleddash;`
+  val math tinfo \boxplus            = tag `mo` `&boxplus;`
+  val math tinfo \boxminus           = tag `mo` `&boxminus;`
+  val math tinfo \boxtimes           = tag `mo` `&boxtimes;`
+  val math tinfo \boxdot             = tag `mo` `&dotsquare;`
+  val math tinfo \curlyvee           = tag `mo` `&curlyvee;`
+  val math tinfo \curlywedge         = tag `mo` `&curlywedge;`
+  val math tinfo \Join               = tag `mo` `&bowtie;`
+  val math tinfo \ltimes             = tag `mo` `&ltimes;`
+  val math tinfo \rtimes             = tag `mo` `&rtimes;`
+  val math tinfo \leftthreetimes     = tag `mo` `&leftthreetimes;`
+  val math tinfo \rightthreetimes    = tag `mo` `&rightthreetimes;`
+  val math tinfo \wr                 = tag `mo` `&wr;`
+  val math tinfo \diamond            = tag `mi` `&diamond;`
+  val math tinfo \star               = tag `mi` `&Star;`
+  val math tinfo \complement         = tag `mi` `&complement;`
+  val math tinfo \angle              = tag `mi` `&angle;`
+  val math tinfo \measuredangle      = tag `mi` `&measuredangle;`
+  val math tinfo \sphericalangle     = tag `mo` `&angsph;`
+
+
+  val math tinfo \int with subopt supopt =
+    let base = tag `mo` `&int;` in
+    match (subopt, supopt) with
+    | (None, None) -> base
+    | (Some(sub), None) ->
+        tag `msub` (base ^ (math-to-html tinfo sub))
+    | (None, Some(sup)) ->
+        tag `msup` (base ^ (math-to-html tinfo sup))
+    | (Some(sub), Some(sup)) ->
+        tag `msubsup` (base ^ (math-to-html tinfo sub) ^ (math-to-html tinfo sub))
+    end
+
+
+  val math tinfo \ordd    = tag `mo` `d`
+  val math tinfo \partial = tag `mo` `&part;`
+  val math tinfo \nabla   = tag `mo` `&nabla;`
+
+
+  val bracket tinfo op cl m =
+    tag `mrow` ((tag `mo` op) ^ (math-to-html tinfo m) ^ (tag `mo` cl))
+
+
+  val paren tinfo = bracket tinfo `(` `)`
+  val math tinfo \paren m = paren tinfo m
+
+  val math tinfo \angle-bracket m = bracket tinfo `&langle;` `&rangle;` m
+
+  val math tinfo \app m1 m2 =
+    tag `mrow` ((math-to-html tinfo m1) ^ (tag `mo` `&ApplyFunction;`) ^ (paren tinfo m2))
+
+  val math tinfo \brace m = bracket tinfo `{` `}` m
+  val math tinfo \sqbracket m = bracket tinfo `[` `]` m
+  val math tinfo \abs m = bracket tinfo `|` `|` m
+  val math tinfo \norm m = bracket tinfo `&#x2016;` `&#x2016;` m
+  val math tinfo \floor m = bracket tinfo `&lfloor;` `&rfloor;` m
+  val math tinfo \ceil m = bracket tinfo `&lceil;` `&rceil;` m
+  val math tinfo \set m = bracket tinfo `{` `}` m
+
+  val math tinfo \setsep m1 m2 =
+    tag `mrow` ((tag `mo` `{`) ^ (math-to-html tinfo m1) ^ (tag `mo` `|`) ^ (math-to-html tinfo m2) ^ (tag `mo` `}`))
+    % TODO: <mo separator="true">|</mo>
+
+  val math tinfo \cases lst =
+    let inner =
+      lst |> List.map (fun (m, it) -> (
+        tag `mtr` ((tag `mtd` (math-to-html tinfo m)) ^ (tag `mtd` (tag `mtext` (stringify-inline tinfo it))))
+      )) |> String.concat
+    in
+    tag `mtable` inner
+
 
 end
