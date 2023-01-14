@@ -461,9 +461,9 @@ end = struct
   val output-scripts (base : string) (subopt : option string) (supopt : option string) =
     match (subopt, supopt) with
     | (None, None)           -> math-element base
-    | (Some(sub), None)      -> tag `msub` ((math-element base) ^ sub)
-    | (None, Some(sup))      -> tag `msup` ((math-element base) ^ sup)
-    | (Some(sub), Some(sup)) -> tag `msubsup` ((math-element base) ^ sub ^ sup)
+    | (Some(sub), None)      -> tag `msub` ((math-element base) ^ (tag `mrow` sub))
+    | (None, Some(sup))      -> tag `msup` ((math-element base) ^ (tag `mrow` sup))
+    | (Some(sub), Some(sup)) -> tag `msubsup` ((math-element base) ^ (tag `mrow` sub) ^ (tag `mrow` sup))
     end
 
   val inline tinfo \math m =
@@ -888,7 +888,7 @@ end = struct
     | (None, Some(sup)) ->
         tag `msup` (base ^ (math-to-html tinfo sup))
     | (Some(sub), Some(sup)) ->
-        tag `msubsup` (base ^ (math-to-html tinfo sub) ^ (math-to-html tinfo sub))
+        tag `msubsup` (base ^ (math-to-html tinfo sub) ^ (math-to-html tinfo sup))
     end
 
 

@@ -2,24 +2,79 @@
   (`mathml`, `0.0.1`),
 ]]
 use open DocumentClass of `document-class`
-use package Mathml
+use package open Mathml
 
 document (|
   title = {SATySFi-MathML},
 |) '<
-  +p {
+  % some test cases are taken from
+  % https://github.com/gfngfn/SATySFi/blob/22bf0faa63d4325b14ee216d97779263b0cb8b55/doc/math1.saty
+  % https://github.com/gfngfn/SATySFi/blob/7aa6d7db5b21ffa0d6153135635d744b75a7339b/tests/math2.saty
+
+  +p{
     Hello World!
   }
   +p{
+    Multple-digit number:
     ${42}
   }
   +p{
-    ${E = m c^2}
+    Inequality (and text):
+    ${\frac{a + b}{2} > \sqrt{ab} \text!{&nbsp\;unless&nbsp\;} a = b}
   }
   +p{
-    ${x = \Mathml.frac{-b + \Mathml.sqrt{b^2 - 4ac}}{2a}}
+    ${\paren{F^n} \paren{F} = \paren{G \frac{M m}{R^2}}^{n + 1}}
   }
   +p{
-    ${\Mathml.frac{a + b}{2} > \Mathml.sqrt{ab} \Mathml.text!{&nbsp\;unless&nbsp\;} a = b}
+    Big math:
+    ${\paren{\frac{\paren{\frac{A}{B} + C}}{D^{\paren{n - 1}}}}_2}
   }
+  +p{
+    Parentheses:
+    ${\paren{\paren{\paren{A} + B} + C}}, ${\brace{\brace{\brace{A} + B} + C}}
+  }
+  +p{
+    Radical:
+    ${2 \sqrt{3} + \frac{2}{\sqrt{5}} + \frac{1}{\sqrt{x^2 + 1}}}
+  }
+  +p{
+    The solution of the equation ${a x^2 + b x + c = 0} as to ${x} is
+      ${x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}}.
+  }
+  +p{
+    Multiplex radicals:
+    ${\sqrt{\sqrt{\sqrt{\sqrt{2}}}}}
+  }
+  +p{
+    Limits:
+    ${\lower{\lim}{n \to \infty} \paren{1 + \frac{1}{n}}^{n} = e}
+  }
+  +p{
+    Fraction superscript:
+    ${e^{\frac{x}{2}}}
+  }
+  +p{
+    Sub-superscript:
+    ${a_{n - 1}^{2} b},
+  }
+  % +p{
+  %   Sub-superscript correction:
+  %   ${a_1^{\frac{n}{2}}}, ${\bm{f_1}^2}
+  % }
+  +p{
+    Big operator:
+    ${\upper{\lower{\sum}{n = 1}}{\infty} \frac{1}{n^2} = \frac{\pi^2}{6}}
+  }
+  +p{
+    Integral:
+    ${\int_0^1 \sqrt{1 - x^2} \ordd x}
+  }
+  +p{
+    Texts contained in formulae:
+    ${\frac{\text!{Hoge}}{2} + \sqrt{\text!{Piyo}}}
+  }
+  +p{
+    Tuple: ${\angle-bracket{x, y, z}}
+  }
+
 >
