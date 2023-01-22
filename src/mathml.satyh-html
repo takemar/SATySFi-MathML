@@ -676,6 +676,7 @@ end = struct
 
 
   val vop tinfo base subopt supopt =
+    let base = tag `mo` base in
     match (subopt, supopt) with
     | (None, None) -> base
     | (Some(sub), None) ->
@@ -683,7 +684,7 @@ end = struct
     | (None, Some(sup)) ->
         tag `mover` (base ^ (math-to-html tinfo sup))
     | (Some(sub), Some(sup)) ->
-        tag `munderover` (base ^ (math-to-html tinfo sub) ^ (math-to-html tinfo sub))
+        tag `munderover` (base ^ (math-to-html tinfo sub) ^ (math-to-html tinfo sup))
     end
 
   val math-function name =
